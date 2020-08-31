@@ -1,0 +1,27 @@
+{
+	"editor.formatOnSave": true,
+	"files.exclude": {
+		".env": true,
+		".envrc": true,
+		"**/*.spec.json": true,
+		"**/tsconfig.spec.*": true,
+		"**/tsconfig.spec": true,
+		"angular.json": true,
+		"app/node_modules": true,
+		"browserslist": true,
+		"e2e": true,
+		"ionic.config.json": true,
+		"karma.conf.js": true,
+		"**/node_modules": true,
+		"src/assets": true,
+		"src/environments": true,
+		"src/global.scss": true,
+		"src/karma.conf.js": true,
+		"src/main.ts": true,
+		"src/polyfills.ts": true,
+		"src/test.ts": true,
+		"src/theme": true,
+		"src/zone-flags.ts": true,
+		"yarn.lock": true
+	}
+}

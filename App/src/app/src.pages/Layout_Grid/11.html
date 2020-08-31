@@ -1,0 +1,773 @@
+<html>
+    <head>
+        <style>
+            body {
+                font: normal 1.4em Verdana, Arial, sans-serif;
+                background-color: #fff;
+            }
+
+            .pg_title {
+                font: bold 1.7em Verdana, Arial, sans-serif;
+            }
+
+            .pg_room {
+                font: bold 1.4em Verdana, Arial, sans-serif;
+                padding: 10px;
+            }
+
+            .s_room {
+                font: bold 1.2em Verdana, Arial, sans-serif;
+            }
+
+            .d_room {
+                font: bold 0.7em Verdana, Arial, sans-serif;
+            }
+
+            .o_room {
+                font: normal 1em Verdana, Arial, sans-serif;
+                text-decoration: underline;
+            }
+
+            .d_room_r {
+                padding: 5px;
+                background-color: #f00;
+            }
+
+            .d_room_g {
+                padding: 5px;
+                background-color: #0f0;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: 7.7% 7.7% 7.7% 7.7% 7.7% 7.7% auto 7.7% 7.7% 7.7% 7.7% 7.7% 7.7%;
+                grid-template-rows: 7.5% 7% 6.5% 6.5% 6.5% 6.5% 6.5% 6.5% auto 7% 6.5% 6.5% 6.5% 6.5% 6.5% 6.5%;
+                grid-gap: 3px 1px;
+                align-items: center;
+                justify-content: stretch;
+            }
+
+            .hs {
+                grid-column-start: 1;
+                grid-column-end: 14;
+                grid-row-start: 9;
+                grid-row-end: 9;
+            }
+
+            .hdr-1 {
+                grid-column-start: 1;
+                grid-column-end: 4;
+                grid-row-start: 1;
+                grid-row-end: 1;
+                justify-self: start;
+            }
+
+            .hdr-2 {
+                grid-column-start: 4;
+                grid-column-end: 11;
+                grid-row-start: 1;
+                grid-row-end: 1;
+                justify-self: center;
+                text-align: center;
+            }
+
+            .hdr-3 {
+                grid-column-start: 11;
+                grid-column-end: 14;
+                grid-row-start: 1;
+                grid-row-end: 1;
+                justify-self: end;
+            }
+
+            .rm-1 {
+                grid-column-start: 1;
+                grid-column-end: 7;
+                grid-row-start: 2;
+                grid-row-end: 2;
+                justify-self: start;
+            }
+
+            .rm-2 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 2;
+                grid-row-end: 2;
+            }
+
+            .rm-3 {
+                grid-column-start: 8;
+                grid-column-end: 13;
+                grid-row-start: 2;
+                grid-row-end: 2;
+                justify-self: start;
+            }
+
+            .rm-4 {
+                grid-column-start: 1;
+                grid-column-end: 7;
+                grid-row-start: 10;
+                grid-row-end: 10;
+                justify-self: start;
+            }
+
+            .rm-5 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 10;
+                grid-row-end: 10;
+            }
+
+            .rm-6 {
+                grid-column-start: 8;
+                grid-column-end: 12;
+                grid-row-start: 10;
+                grid-row-end: 10;
+                justify-self: start;
+            }
+
+            .rm-7 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 10;
+                grid-row-end: 10;
+                justify-self: end;
+            }
+
+            .rms-1 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 3;
+                grid-row-end: 3;
+                justify-self: center;
+            }
+
+            .rms-2 {
+                grid-column-start: 3;
+                grid-column-end: 5;
+                grid-row-start: 3;
+                grid-row-end: 3;
+                justify-self: center;
+            }
+
+            .rms-3 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 3;
+                grid-row-end: 3;
+                justify-self: center;
+            }
+
+            .rms-4 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 3;
+                grid-row-end: 3;
+            }
+
+            .rms-5 {
+                grid-column-start: 8;
+                grid-column-end: 9;
+                grid-row-start: 3;
+                grid-row-end: 3;
+                justify-self: center;
+            }
+
+            .rms-6 {
+                grid-column-start: 10;
+                grid-column-end: 12;
+                grid-row-start: 3;
+                grid-row-end: 3;
+                justify-self: center;
+            }
+
+            .rms-7 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 3;
+                grid-row-end: 3;
+                justify-self: center;
+            }
+
+            .rmd-1 {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 4;
+                grid-row-end: 4;
+            }
+
+            .rmd-2 {
+                grid-column-start: 3;
+                grid-column-end: 5;
+                grid-row-start: 4;
+                grid-row-end: 4;
+                justify-self: center;
+            }
+
+            .rmd-3 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 4;
+                grid-row-end: 4;
+                justify-self: center;
+            }
+
+            .rmd-4 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 4;
+                grid-row-end: 4;
+            }
+
+            .rmd-5 {
+                grid-column-start: 8;
+                grid-column-end: 10;
+                grid-row-start: 4;
+                grid-row-end: 4;
+            }
+
+            .rmd-6 {
+                grid-column-start: 10;
+                grid-column-end: 12;
+                grid-row-start: 4;
+                grid-row-end: 4;
+                justify-self: center;
+            }
+
+            .rmd-7 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 4;
+                grid-row-end: 4;
+                justify-self: center;
+            }
+
+            .rms-8 {
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 11;
+                grid-row-end: 11;
+                justify-self: center;
+            }
+
+            .rms-9 {
+                grid-column-start: 3;
+                grid-column-end: 5;
+                grid-row-start: 11;
+                grid-row-end: 11;
+                justify-self: center;
+            }
+
+            .rms-10 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 11;
+                grid-row-end: 11;
+                justify-self: center;
+            }
+
+            .rms-11 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 11;
+                grid-row-end: 11;
+            }
+
+            .rms-12 {
+                grid-column-start: 8;
+                grid-column-end: 9;
+                grid-row-start: 11;
+                grid-row-end: 11;
+                justify-self: start;
+            }
+
+            .rms-13 {
+                grid-column-start: 10;
+                grid-column-end: 12;
+                grid-row-start: 11;
+                grid-row-end: 11;
+                justify-self: center;
+            }
+
+            .rms-14 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 11;
+                grid-row-end: 11;
+                justify-self: center;
+            }
+
+            .rmd-8 {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row-start: 12;
+                grid-row-end: 12;
+            }
+
+            .rmd-9 {
+                grid-column-start: 3;
+                grid-column-end: 5;
+                grid-row-start: 12;
+                grid-row-end: 12;
+                justify-self: center;
+            }
+
+            .rmd-10 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 12;
+                grid-row-end: 12;
+                justify-self: center;
+            }
+
+            .rmd-11 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 12;
+                grid-row-end: 12;
+            }
+
+            .rmd-12 {
+                grid-column-start: 8;
+                grid-column-end: 10;
+                grid-row-start: 12;
+                grid-row-end: 12;
+            }
+
+            .rmd-13 {
+                grid-column-start: 10;
+                grid-column-end: 12;
+                grid-row-start: 12;
+                grid-row-end: 12;
+                justify-self: center;
+            }
+
+            .rmd-14 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 12;
+                grid-row-end: 12;
+                justify-self: center;
+            }
+
+            .rdd-1 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 5;
+                grid-row-end: 5;
+                justify-self: start;
+            }
+
+            .rdd-2 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 5;
+                grid-row-end: 5;
+                justify-self: end;
+            }
+
+            .rdd-3 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 5;
+                grid-row-end: 5;
+            }
+
+            .rdd-4 {
+                grid-column-start: 8;
+                grid-column-end: 12;
+                grid-row-start: 5;
+                grid-row-end: 5;
+                justify-self: start;
+            }
+
+            .rdd-5 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 5;
+                grid-row-end: 5;
+                justify-self: end;
+            }
+
+            .rdd-6 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 6;
+                grid-row-end: 6;
+                justify-self: start;
+            }
+
+            .rdd-7 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 6;
+                grid-row-end: 6;
+                justify-self: end;
+            }
+
+            .rdd-8 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 6;
+                grid-row-end: 6;
+            }
+
+            .rdd-9 {
+                grid-column-start: 8;
+                grid-column-end: 12;
+                grid-row-start: 6;
+                grid-row-end: 6;
+                justify-self: start;
+            }
+
+            .rdd-10 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 6;
+                grid-row-end: 6;
+                justify-self: end;
+            }
+
+            .rdd-11 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 7;
+                grid-row-end: 7;
+                justify-self: start;
+            }
+
+            .rdd-12 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 7;
+                grid-row-end: 7;
+                justify-self: end;
+            }
+
+            .rdd-13 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 7;
+                grid-row-end: 7;
+            }
+
+            .rdd-14 {
+                grid-column-start: 8;
+                grid-column-end: 12;
+                grid-row-start: 7;
+                grid-row-end: 7;
+                justify-self: start;
+            }
+
+            .rdd-15 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 7;
+                grid-row-end: 7;
+                justify-self: end;
+            }
+
+            .rdd-16 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 8;
+                grid-row-end: 8;
+                justify-self: start;
+            }
+
+            .rdd-17 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 8;
+                grid-row-end: 8;
+                justify-self: end;
+            }
+
+            .rdd-18 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 8;
+                grid-row-end: 8;
+            }
+
+            .rdd-19 {
+                grid-column-start: 8;
+                grid-column-end: 12;
+                grid-row-start: 8;
+                grid-row-end: 8;
+                justify-self: start;
+            }
+
+            .rdd-20 {
+                grid-column-start: 12;
+                grid-column-end: 14;
+                grid-row-start: 8;
+                grid-row-end: 8;
+                justify-self: end;
+            }
+
+            .rdd-21 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 13;
+                grid-row-end: 13;
+                justify-self: start;
+            }
+
+            .rdd-22 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 13;
+                grid-row-end: 13;
+                justify-self: end;
+            }
+
+            .rdd-23 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 13;
+                grid-row-end: 13;
+            }
+
+            .rdd-24 {
+                grid-column-start: 8;
+                grid-column-end: 11;
+                grid-row-start: 13;
+                grid-row-end: 13;
+                justify-self: start;
+            }
+
+            .rdd-25 {
+                grid-column-start: 11;
+                grid-column-end: 14;
+                grid-row-start: 13;
+                grid-row-end: 13;
+                justify-self: end;
+            }
+
+            .rdd-26 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 14;
+                grid-row-end: 14;
+                justify-self: start;
+            }
+
+            .rdd-27 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 14;
+                grid-row-end: 14;
+                justify-self: end;
+            }
+
+            .rdd-28 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 14;
+                grid-row-end: 14;
+            }
+
+            .rdd-29 {
+                grid-column-start: 8;
+                grid-column-end: 11;
+                grid-row-start: 14;
+                grid-row-end: 14;
+                justify-self: start;
+            }
+
+            .rdd-30 {
+                grid-column-start: 11;
+                grid-column-end: 14;
+                grid-row-start: 14;
+                grid-row-end: 14;
+                justify-self: end;
+            }
+
+            .rdd-31 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 15;
+                grid-row-end: 15;
+                justify-self: start;
+            }
+
+            .rdd-32 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 15;
+                grid-row-end: 15;
+                justify-self: end;
+            }
+
+            .rdd-33 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 15;
+                grid-row-end: 15;
+            }
+
+            .rdd-34 {
+                grid-column-start: 8;
+                grid-column-end: 11;
+                grid-row-start: 15;
+                grid-row-end: 15;
+                justify-self: start;
+            }
+
+            .rdd-35 {
+                grid-column-start: 11;
+                grid-column-end: 14;
+                grid-row-start: 15;
+                grid-row-end: 15;
+                justify-self: end;
+            }
+
+            .rdd-36 {
+                grid-column-start: 1;
+                grid-column-end: 5;
+                grid-row-start: 16;
+                grid-row-end: 16;
+                justify-self: start;
+            }
+
+            .rdd-37 {
+                grid-column-start: 5;
+                grid-column-end: 7;
+                grid-row-start: 16;
+                grid-row-end: 16;
+                justify-self: end;
+            }
+
+            .rdd-38 {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 16;
+                grid-row-end: 16;
+            }
+
+            .rdd-39 {
+                grid-column-start: 8;
+                grid-column-end: 11;
+                grid-row-start: 16;
+                grid-row-end: 16;
+                justify-self: start;
+            }
+
+            .rdd-40 {
+                grid-column-start: 11;
+                grid-column-end: 14;
+                grid-row-start: 16;
+                grid-row-end: 16;
+                justify-self: end;
+            }
+
+            .ftr-1 {
+                grid-column-start: 1;
+                grid-column-end: 8;
+                grid-row-start: 17;
+                grid-row-end: 17;
+                justify-self: start;
+            }
+
+            .ftr-2 {
+                grid-column-start: 8;
+                grid-column-end: 14;
+                grid-row-start: 17;
+                grid-row-end: 17;
+                justify-self: end;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hdr-1">
+                <input type="button" value="Limits" tabindex="1" />
+            </div>
+            <div class="hdr-2 pg_title">Factory Floor Systems</div>
+            <div class="hdr-3">
+                <input type="button" value="Param Overview" tabindex="2" />
+                <input type="button" value="Factory Ops" tabindex="3" />
+            </div>
+
+            <div class="rm-1 pg_room">Bldg. 5</div>
+            <div class="rms-1">
+                <input type="button" value="Partition" tabindex="1" />
+            </div>
+            <div class="rms-2 s_room">E47</div>
+            <div class="rms-3 s_room">ACK</div>
+            <div class="rmd-2 d_room d_room_r">Running</div>
+            <div class="rmd-3 d_room d_room_g">
+                &nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="rdd-1">Water Supply Pressure</div>
+            <div class="rdd-2" id="r1p1">34. PSI</div>
+            <div class="rdd-6">Water Supply Temp.</div>
+            <div class="rdd-7" id="r1p2">71. Deg</div>
+            <div class="rdd-11">Header Pressure</div>
+            <div class="rdd-12" id="r1p3">103.5 PSI</div>
+            <div class="rdd-16">Room Air Flow</div>
+            <div class="rdd-17" id="r1p4">5830 SCFM</div>
+
+            <div class="rm-3 pg_room">Bldg. R</div>
+            <div class="rms-5">
+                <input type="button" value="Partition" tabindex="1" />
+            </div>
+            <div class="rms-6 s_room">E72-14</div>
+            <div class="rms-7 s_room">E72-15</div>
+            <div class="rmd-6 d_room d_room_g">
+                &nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="rmd-7 d_room d_room_r">Running</div>
+            <div class="rdd-4">Water Supply Pressure</div>
+            <div class="rdd-5" id="r2p1">41.4 PSI</div>
+            <div class="rdd-9">Water Supply Temp.</div>
+            <div class="rdd-10" id="r2p2">69.8 Deg</div>
+            <div class="rdd-14">Header Pressure</div>
+            <div class="rdd-15" id="r2p3">103.8 PSI</div>
+            <div class="rdd-19">Room Air Flow</div>
+            <div class="rdd-20" id="r2p4">2880 SCFM</div>
+
+            <div class="rm-4 pg_room">Bldg. 17</div>
+            <div class="rms-8">
+                <input type="button" value="Partition" tabindex="1" />
+            </div>
+            <div class="rms-9 s_room">ACK</div>
+            <div class="rms-10 s_room">E47</div>
+            <div class="rmd-9 d_room d_room_r">Running</div>
+            <div class="rmd-10 d_room d_room_g">
+                &nbsp;&nbsp;&nbsp;&nbsp;Off&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="rdd-21">Water Supply Pressure</div>
+            <div class="rdd-22" id="r3p1">44. PSI</div>
+            <div class="rdd-26">Water Supply Temp.</div>
+            <div class="rdd-27" id="r3p2">75. Deg</div>
+            <div class="rdd-31">Header Pressure</div>
+            <div class="rdd-32" id="r3p3">102.8 PSI</div>
+            <div class="rdd-36">Room Air Flow</div>
+            <div class="rdd-37" id="r3p4">3930 SCFM</div>
+
+            <div class="rm-6 pg_room">East Campus</div>
+            <div class="rm-7" id="timestamp">&nbsp;</div>
+            <div class="rms-12">
+                <input type="button" value="Tools" tabindex="1" />
+            </div>
+            <div class="rms-13 o_room">Op Hum.</div>
+            <div class="rms-14 o_room">Op Temp.</div>
+            <div class="rmd-12">
+                <input type="button" value="KK Flow" tabindex="1" />
+            </div>
+            <div class="rmd-13" id="r4p1">1.6 %</div>
+            <div class="rmd-14" id="r4p2">55.9 Deg</div>
+            <div class="rdd-24">Air Flow</div>
+            <div class="rdd-25" id="r4p3">12640 SCFM</div>
+            <div class="rdd-29">Prev. Day Flow</div>
+            <div class="rdd-30" id="r4p4">17,260 kSCF</div>
+            <div class="rdd-34">MTD Flow</div>
+            <div class="rdd-35" id="r4p5">176,520 kSCF</div>
+            <div class="rdd-39">Prev. MTD Flow</div>
+            <div class="rdd-40" id="r4p6">485,360 kSCF</div>
+
+            <div class="hs">&nbsp;</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>buttons3</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="button-group-navigation" target="_blank">
+        <li><a class="btn"          (click)='toggleClass($event)'><ion-icon class="icon" name="bluetooth"></ion-icon></a></li>
+        <li><a class="btn"          (click)='toggleClass($event)'><ion-icon class="icon" name="wifi"></ion-icon></a></li>
+        <li><a class="btn active"   (click)='toggleClass($event)'><ion-icon class="icon" name="navigate"></ion-icon></a></li>
+        <li><a class="btn"          (click)='toggleClass($event)'><ion-icon class="icon" name="sync"></ion-icon></a></li>
+        <li><a class="btn"          (click)='toggleClass($event)'><ion-icon class="icon" name="airplane"></ion-icon></a></li>
+        <li><a class="btn active"   (click)='toggleClass($event)'><ion-icon class="icon" name="volume-off"></ion-icon></a></li>
+    </div>
+</ion-content>

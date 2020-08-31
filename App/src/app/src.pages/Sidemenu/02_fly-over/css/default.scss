@@ -1,0 +1,264 @@
+/**
+ * -------------------------
+ * CSS only Fly-Over-Menu
+ * -------------------------
+ **/
+
+// **
+// * SETUP VARIABLES
+// **
+// PAGE SETUP
+$PAGE_WIDTH: 100%; // Set global page width
+$CONTAINER_WIDTH: 940px; // Set max container width (if below that, go fullwidth)
+$BODY_FONT: 'Roboto', sans-serif;
+
+// MENU SETUP
+$MENU_WIDTH: 375px;
+
+// MISC
+$ANIMATION_DURATION: 300ms;
+$ANIMATION_EASING_IN: cubic-bezier(0, 0, 0.2, 1);
+// $ANIMATION_EASING_OUT: cubic-bezier(0.4, 0.0, 0.2, 1);
+
+// ############################
+
+// **
+// * This is where the magic happens:
+// * Building navigation & features
+// **
+.c-nav {
+    // ## Setup utilities for the hide/show mechanism
+
+    // **
+    // * Hide the checkbox input - we just need it to store a value, not to show up on the page
+    // **
+    &__check {
+        position: absolute;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        width: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+
+        // **
+        // * HIDE the navigation container when checkbox IS NOT checked
+        // * 1. Make it stick to the whole right siede of the screen
+        // * 2. Hide the container and its content
+        // **/
+        &:not(:checked) ~ .c-nav__container {
+            visibility: hidden; // [ 2 ]
+            max-width: 0; // [ 2 ]
+            opacity: 0; // [ 2 ]
+
+            // You may use this code below to animate things when CLOSING the nav menu
+            // & .MY_INNER_CLASS {
+            //   transform: scale(1);
+            // }
+        } // /.nav__check:not(:checked) ~ .nav__container
+
+        &:checked ~ .c-nav__container {
+            // You may use this code below to animate things when OPENING the nav menu
+            // & .MY_INNER_CLASS {
+            //   transform: scale(1);
+            // }
+        } // /.nav__check:checked ~ .nav__container
+    } // /.nav__check
+
+    // **
+    // * Page overlay to hide menu again if clicked outside of its context
+    // * 1. Make it stick to the whole screen
+    // * (2.) REDUCE overlay size with menu width
+    // * OR
+    // * (3.) Pull overlay behind nav menu and lay backdrop over the page
+    // **
+    &__click-guard {
+        position: fixed; // [ 1 ]
+        top: 0; // [ 1 ]
+        bottom: 0; // [ 1 ]
+        left: 0; // [ 1 ]
+
+        width: 100%; // [ 1 ]
+        // max-width: calc(100% - #{$MENU_WIDTH}); // [ 2 ]
+
+        z-index: -1; // [ 3 ]
+
+        background: rgba(0, 0, 0, 0.2); // [ 3 ]
+
+        cursor: not-allowed;
+    } // /.nav__click-guard
+
+    // **
+    // * MISC: Just some button styles
+    // * Keep in Mind to set cursor to pointer!!! to signal that an action is possible
+    // **
+    &__btn {
+        padding: 16px;
+
+        cursor: pointer;
+        transition: background 0.2s $ANIMATION_EASING_IN;
+
+        color: lighten(#00e5ff, 40%);
+
+        border-radius: 50%;
+
+        &:active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        &--close {
+            position: absolute;
+            top: 0;
+            right: 0;
+        } // /.nav__btn--close
+    } // /.nav__btn
+
+    // **
+    // * Setup the nav menu (& SHOW when checkbox IS checked)
+    // * 1. Set the max width to fill the screen on small devices (eg iPhone)
+    // *    and to be contained on larger devices
+    // * 2. Preserve space for closing button
+    // **
+    &__container {
+        position: fixed; // [ 1 ]
+        top: 0; // [ 1 ]
+        right: 0; // [ 1 ]
+        bottom: 0; // [ 1 ]
+
+        padding-top: 46px; // [ 2 ]
+
+        width: 100%;
+        max-width: $MENU_WIDTH; // [ 1 ]
+        opacity: 1;
+
+        transition: visibility 0s $ANIMATION_EASING_IN,
+            max-width 0.2s $ANIMATION_EASING_IN,
+            opacity 0.3s $ANIMATION_EASING_IN;
+        transition-delay: 0s;
+
+        // **
+        // * MISC: Just some styles
+        // **
+        color: white;
+        background: rgba(0, 0, 0, 0.96);
+
+        will-change: visibility, opacity, max-width, width;
+    } // /.nav__container
+
+    // **
+    // * MISC: Nav menu items styleing
+    // **
+    &__list {
+        margin: 0;
+        padding: 0;
+
+        list-style: none;
+    } // /.nav__list
+
+    // **
+    // * MISC: Nav menu items styleing
+    // **
+    &__item {
+        display: flex;
+
+        padding: 16px;
+
+        cursor: pointer;
+        vertical-align: middle;
+
+        justify-content: flex-start;
+        align-items: center;
+        will-change: background;
+
+        i {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    } // /.nav__item
+} // /.nav
+
+// ############################
+// All code below is just for visual aid, NOT for functionality
+
+// **
+// * DEFAULT CSS Stuff
+// **
+html,
+body {
+    margin: 0;
+    font-family: $BODY_FONT;
+}
+* {
+    box-sizing: border-box;
+}
+
+// **
+// * MISC: HEADER setup & styles
+// **
+.c-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    color: lighten(#673ab7, 40%);
+    background: #7c4dff;
+    background: linear-gradient(45deg, #7c4dff 20%, #00e5ff 100%);
+
+    &__wrapper {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.o-wrapper {
+    width: $PAGE_WIDTH;
+    max-width: $CONTAINER_WIDTH;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+.c-logo {
+    font-size: 42px;
+}
+
+.c-main {
+    font-family: 'BLOKK Neue';
+
+    // width: $PAGE_WIDTH;
+    // max-width: $CONTAINER_WIDTH;
+    // margin-top: 30px;
+    // margin-right: auto;
+    // margin-left: auto;
+    // padding-right: 16px;
+    // padding-left: 16px;
+
+    h1 {
+        font-size: 50px;
+    }
+
+    // FLEXBOX FYI: Set "flex-wrap: wrap;" to wrap content if you run out of space
+    // it will wrap the content if you set an max-width for one col an enable the shrinking on the other
+    // 1. Enable flex property
+    // 2. Set max-width
+    // 3. Center element
+    section > div {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    section > div > div {
+        font-size: 30px;
+        flex: 1; // [ 1 ]
+        padding: 16px;
+    }
+    section > div > img {
+        max-width: 350px; // [ 2 ]
+        margin: 0 auto;
+    }
+}
