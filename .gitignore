@@ -1,6 +1,11 @@
+**/.env.d
+
 platforms
 plugins
 www
 node_modules
 .env
 .env
+**/.env.d
+**/.env
+
